@@ -1,0 +1,23 @@
+- name: system setup | utilities | install utility packages
+  tags: packages,system,settings
+  package:
+    state: latest
+    name:
+      - curl
+      - dnsutils
+      - git
+      - htop
+      - iputils-ping
+      - net-tools
+      - netcat-openbsd
+      - nmap
+      - openssh-client
+      - openssl
+      - rsync
+      - tcpdump
+      - telnet
+      - traceroute
+      - tree
+      - vim
+      - wget
+      - whois

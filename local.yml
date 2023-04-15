@@ -1,10 +1,67 @@
----
-- hosts: localhost
+# tasks to complete before running roles
+- hosts: all
+  tags: always
+  become: true
+  pre_tasks:
+
+    - name: pre-run | update package cache (debian, etc)
+      tags: always
+      apt: update_cache=yes
+      changed_when: False
+      when: ansible_distribution in ["Debian", "Ubuntu"]
+
+
+# run roles
+- hosts: all
+  tags: base
   connection: local
   become: true
+  roles:
+    - base
 
+- hosts: workstation
+  tags: workstation
+  connection: local
+  become: true
+  roles:
+    - workstation
 
+# end of run cleanup and reporting
+- hosts: all
+  become: true
   tasks:
-  - name: install htop
-    package:
-      name: htop
+  - name: cleanup package cache (debian and ubuntu)
+    tags: always
+    apt:
+      autoclean: yes
+    changed_when: false
+    when: ansible_distribution in ["Debian", "Ubuntu"]
+
+  - name: autoremove orphan packages (debian and ubuntu)
+    tags: always
+    apt:
+      autoremove: yes
+      purge: yes
+    when: ansible_distribution in ["Debian", "Ubuntu"]
+
+
+
+        #- hosts: localhost
+        #  connection: local
+        #  become: true
+        #
+        #
+        #  tasks:
+        #  - name: install basic apps 
+        #    package:
+        #      name:
+        #        - htop
+        #        - vim
+        #
+        #  - name: copy bash_aliases file
+        #    copy:
+        #      src: files/.bash_aliases
+        #      dest: /home/pascal/.bash_aliases
+        #      owner: pascal
+        #      group: pascal
+        #

@@ -1,0 +1,8 @@
+- block:
+
+  # Make sure users exist on the system
+  - import_tasks: users/pascal.yml
+
+  # install software
+  - import_tasks: software/packages_cleanup.yml
+  - import_tasks: software/packages_utilities.yml

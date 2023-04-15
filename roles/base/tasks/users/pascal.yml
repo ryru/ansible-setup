@@ -1,0 +1,35 @@
+- name: users | pascal | create group
+  tags: groups,pascal,users
+  group:
+    name: pascal
+    state: present
+
+- name: users | pascal | create user
+  tags: pascal,sudo,users
+  user:
+    name: pascal
+    group: pascal
+    groups: adm,sudo
+    state: present
+    comment: "Pascal"
+    shell: /bin/bash
+
+- name: users | pascal | pascal | add sudoers file
+  tags: pascal,settings,sudo,system,users
+  copy:
+    src: users/sudoers_pascal
+    dest: /etc/sudoers.d/pascal
+    owner: root
+    group: root
+    mode: 0440
+
+- name: users | pascal | copy dotfiles
+  tags: dotfiles,users,pascal,users,vim
+  copy:
+    src: users/pascal/{{ item.src }}
+    dest: /home/pascal/{{ item.dest }}
+    owner: pascal
+    group: pascal
+    mode: 0600
+  with_items:
+    - { src: 'bash/bash_aliases', dest: '.bash_aliases' }
