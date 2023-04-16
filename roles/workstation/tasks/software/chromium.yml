@@ -1,0 +1,5 @@
+- name: software | chromium | install snap package
+  tags: packages,chromium,snap,workstation-packages
+  snap:
+    name:  chromium
+    state: present

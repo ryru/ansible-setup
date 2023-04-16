@@ -1,0 +1,4 @@
+- name: software | libreoffice | install package
+  tags: packages,libreoffice,workstation-packages
+  package:
+    name: libreoffice

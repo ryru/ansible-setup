@@ -1,0 +1,19 @@
+- name: software | gcloud | copy source list 
+  ansible.builtin.copy:
+    src: gcloud/google-cloud-sdk.list
+    dest: /etc/apt/sources.list.d/google-cloud-sdk.list
+    owner: root
+    group: root
+    mode: '0644'
+    force: no
+
+- name: software | gcloud | add apt signing key
+  ansible.builtin.apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+- name: software | gcloud | install gcloud-cli
+  tags: packages,google-cloud-cli,workstation-packages
+  apt:
+    name: google-cloud-cli
+    update_cache: yes

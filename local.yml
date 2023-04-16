@@ -1,6 +1,10 @@
 # tasks to complete before running roles
-- hosts: all
+- name: start local setup
+  hosts: localhost
   tags: always
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
   become: true
   pre_tasks:
 
@@ -10,24 +14,13 @@
       changed_when: False
       when: ansible_distribution in ["Debian", "Ubuntu"]
 
-
-# run roles
-- hosts: all
-  tags: base
-  connection: local
-  become: true
   roles:
-    - base
-
-- hosts: workstation
-  tags: workstation
-  connection: local
-  become: true
-  roles:
-    - workstation
+    - role: base
+    - role: workstation
 
 # end of run cleanup and reporting
-- hosts: all
+- name: clean-up after all
+  hosts: localhost
   become: true
   tasks:
   - name: cleanup package cache (debian and ubuntu)
@@ -43,25 +36,3 @@
       autoremove: yes
       purge: yes
     when: ansible_distribution in ["Debian", "Ubuntu"]
-
-
-
-        #- hosts: localhost
-        #  connection: local
-        #  become: true
-        #
-        #
-        #  tasks:
-        #  - name: install basic apps 
-        #    package:
-        #      name:
-        #        - htop
-        #        - vim
-        #
-        #  - name: copy bash_aliases file
-        #    copy:
-        #      src: files/.bash_aliases
-        #      dest: /home/pascal/.bash_aliases
-        #      owner: pascal
-        #      group: pascal
-        #

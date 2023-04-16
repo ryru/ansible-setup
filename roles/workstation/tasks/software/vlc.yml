@@ -1,0 +1,4 @@
+- name: software | vlc | install package
+  tags: packages,vlc,workstation-packages
+  package:
+    name: vlc

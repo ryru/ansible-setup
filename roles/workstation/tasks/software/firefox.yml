@@ -1,0 +1,5 @@
+- name: software | firefox | install package
+  tags: packages,firefox,workstation-packages
+  package:
+    name: firefox
+    state: present
