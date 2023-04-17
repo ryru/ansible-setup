@@ -18,6 +18,12 @@
     name: google-cloud-cli
     update_cache: yes
 
+- name: software | gcloud auth plugin | install google-cloud-sdk-gke-gcloud-auth-plugin
+  tags: packages,google-cloud-cli,workstation-packages
+  apt:
+    name: google-cloud-sdk-gke-gcloud-auth-plugin
+    update_cache: yes
+
 - name: software | kubectl | install kubectl 
   tags: packages,google-cloud-cli,workstation-packages
   apt:
