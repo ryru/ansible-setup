@@ -17,3 +17,9 @@
   apt:
     name: google-cloud-cli
     update_cache: yes
+
+- name: software | kubectl | install kubectl 
+  tags: packages,google-cloud-cli,workstation-packages
+  apt:
+    name: kubectl
+    update_cache: yes
