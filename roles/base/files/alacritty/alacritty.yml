@@ -1,0 +1,19 @@
+import:
+  # - ~/.config/alacritty/dracula.yml
+  - ~/.config/alacritty/mocha.yml
+
+window:
+  padding:
+    x: 5
+    y: 5
+  class:
+    instance: Alacritty
+    general: Alacritty
+  opacity: 0.95
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+key_bindings:
+  - { key: Return, mods: Super|Shift, action: SpawnNewInstance }

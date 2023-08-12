@@ -21,3 +21,7 @@
     - name: Install and configure vim
       import_tasks: software/vim.yml
       tags: vim
+
+    - name: Install and configure alacritty terminal
+      import_tasks: software/alacritty.yml
+      tags: alacritty, terminal
