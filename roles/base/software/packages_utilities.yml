@@ -1,9 +1,19 @@
+- name: drivers
+  package:
+    name:
+      - libdrm-amdgpu1
+      - mesa-utils
+      - mesa-va-drivers
+      - vainfo
+
 - name: system setup | utilities | install utility packages
   tags: packages,system,settings
   package:
     state: latest
     name:
+      - bridge-utils
       - curl
+      - delta # nice git diff tool
       - dnsutils
       - git
       - htop
