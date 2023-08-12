@@ -1,0 +1,12 @@
+---
+
+- name: install vim 
+  package:
+    state: latest
+    name:
+      - vim
+
+- name: copy vim config
+  copy:
+    src: vim/vimrc
+    dest: ~/.vimrc

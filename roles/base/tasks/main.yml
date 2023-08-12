@@ -1,8 +1,23 @@
-- block:
+---
 
-  # Make sure users exist on the system
-  - import_tasks: users/pascal.yml
+- name: Basic setup
+  tags: base
+  block:
 
-  # install software
-  - import_tasks: software/packages_cleanup.yml
-  - import_tasks: software/packages_utilities.yml
+  - name: Setup user pascal
+    import_tasks: users/pascal.yml
+    tags: user
+
+  - name: Setup software packages
+    tags: software
+    block:
+    
+    - name: Remove unwanted software
+      import_tasks: software/packages_cleanup.yml
+
+    - name: Install install software
+      import_tasks: software/packages_utilities.yml
+
+    - name: Install and configure vim
+      import_tasks: software/vim.yml
+      tags: vim
