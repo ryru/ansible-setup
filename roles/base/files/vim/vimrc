@@ -1,4 +1,6 @@
+" general settings
 set number
+syntax on
 
 " Window and splitting section
 set splitbelow splitright
@@ -9,28 +11,26 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-
-
-
-
-
-
+" Plugins managed by Plug plugin manager
+" Install plugins by runnging the vim command :PlugInstall
 call plug#begin()
-" The default plugin directory will be as follows:
-"   - Vim (Linux/macOS): '~/.vim/plugged'
-"   - Vim (Windows): '~/vimfiles/plugged'
-"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
-" You can specify a custom plugin directory by passing it as the argument
-"   - e.g. `call plug#begin('~/.vim/plugged')`
-"   - Avoid using standard Vim directory names like 'plugin'
-
-" Make sure you use single quotes
 
 Plug 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 call plug#end()
-" You can revert the settings after the call like so:
-"   filetype indent off   " Disable file-type-specific indentation
-"   syntax off            " Disable syntax highlighting
+
+" plugin specific settings that may only take affect after plugin
+" initialisation
+
+" for correct catppuccin vim colours
+set termguicolors
+colorscheme catppuccin_mocha
 
 map <C-o> :NERDTreeToggle<CR>
+
+" lightline settings
+let g:lightline = {'colorscheme': 'catppuccin_mocha'}
+set laststatus=2
+
