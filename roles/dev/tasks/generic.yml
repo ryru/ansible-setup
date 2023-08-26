@@ -1,0 +1,9 @@
+---
+
+- name: install developer software
+  tags: dev, software
+  package:
+    state: present
+    name:
+      - git
+      - vim

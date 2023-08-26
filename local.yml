@@ -17,6 +17,7 @@
   roles:
     - role: base
     - role: workstation
+    - role: dev
 
 # end of run cleanup and reporting
 - name: clean-up after all
