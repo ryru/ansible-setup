@@ -1,5 +1,4 @@
 ---
-
 - name: "Add node.js apt key"
   apt_key:
     url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
@@ -22,4 +21,3 @@
     name: "{{ item }}"
   with_items:
     - prettier
-

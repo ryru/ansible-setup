@@ -32,6 +32,6 @@
     group: pascal
     mode: 0600
   with_items:
-    - { src: 'bash/bash_aliases', dest: '.bash_aliases' }
-    - { src: 'bash/bashrc', dest: '.bashrc' }
-    - { src: 'bash/bashrc_pascal', dest: '.bashrc_pascal' }
+    - { src: "bash/bash_aliases", dest: ".bash_aliases" }
+    - { src: "bash/bashrc", dest: ".bashrc" }
+    - { src: "bash/bashrc_pascal", dest: ".bashrc_pascal" }

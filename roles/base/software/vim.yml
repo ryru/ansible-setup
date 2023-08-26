@@ -1,6 +1,5 @@
 ---
-
-- name: install vim 
+- name: install vim
   package:
     state: latest
     name:
