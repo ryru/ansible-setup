@@ -19,6 +19,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
+" TODO requires dev role
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', { 'do': 'npm install --frozen-lockfile --production' }
+
 call plug#end()
 
 " plugin specific settings that may only take affect after plugin
@@ -34,3 +38,6 @@ map <C-o> :NERDTreeToggle<CR>
 let g:lightline = {'colorscheme': 'catppuccin_mocha'}
 set laststatus=2
 
+" prettier allow auto format without explicit header
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
