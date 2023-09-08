@@ -1,13 +1,12 @@
-# tasks to complete before running roles
-- name: start local setup
+---
+- name: Start local setup
   hosts: localhost
-  tags: always
   vars:
     ansible_connection: local
     ansible_python_interpreter: "{{ ansible_playbook_python }}"
   become: true
   pre_tasks:
-    - name: pre-run | update package cache (debian, etc)
+    - name: Pre-run | update package cache (Debian, Ubuntu)
       tags: always
       apt: update_cache=yes
       changed_when: False
@@ -18,19 +17,18 @@
     - role: workstation
     - role: dev
 
-# end of run cleanup and reporting
-- name: clean-up after all
+- name: Post-run | Clean-up after all
   hosts: localhost
   become: true
   tasks:
-    - name: cleanup package cache (debian and ubuntu)
+    - name: Cleanup package cache (Debian and Ubuntu)
       tags: always
       apt:
         autoclean: yes
       changed_when: false
       when: ansible_distribution in ["Debian", "Ubuntu"]
 
-    - name: autoremove orphan packages (debian and ubuntu)
+    - name: Autoremove orphan packages (Debian and Ubuntu)
       tags: always
       apt:
         autoremove: yes

@@ -1,4 +1,7 @@
 ---
-- block:
+- name: Install developer tools
+  tags: dev
+  block:
     - import_tasks: generic.yml
     - import_tasks: nodejs.yml
+    - import_tasks: gcloud.yml
