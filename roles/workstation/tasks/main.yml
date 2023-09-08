@@ -2,6 +2,7 @@
 - name: Install workstation
   tags: workspace
   block:
+    - import_tasks: localhost_certificate.yml
     - import_tasks: software/chromium.yml
     - import_tasks: software/firefox.yml
     - import_tasks: software/libreoffice.yml

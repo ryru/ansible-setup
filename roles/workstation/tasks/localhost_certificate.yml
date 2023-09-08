@@ -1,0 +1,29 @@
+---
+- name: Create private Ed25519 key (without passphrase)
+  community.crypto.openssl_privatekey:
+    path: /etc/ssl/localhost.key
+    type: Ed25519
+
+- name: Check if PEM certificate file exists
+  stat:
+    path: /etc/ssl/localhost.pem
+  register: pem_check
+
+- name: Create certificate signing request (CSR)
+  community.crypto.openssl_csr_pipe:
+    privatekey_path: /etc/ssl/localhost.key
+    common_name: localhost
+    organization_name: Local Host AG
+    subject_alt_name:
+      - "DNS:localhost"
+      - "DNS:127.0.0.1"
+  register: csr
+  when: not pem_check.stat.exists
+
+- name: Create self-signed certificate from CSR
+  community.crypto.x509_certificate:
+    path: /etc/ssl/localhost.pem
+    csr_content: "{{ csr.csr }}"
+    privatekey_path: /etc/ssl/localhost.key
+    provider: selfsigned
+  when: not pem_check.stat.exists
