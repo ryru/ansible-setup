@@ -123,6 +123,8 @@ if [ -f ~/.bashrc_pascal ]; then
     . ~/.bashrc_pascal
 fi
 
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
