@@ -2,6 +2,11 @@
 alias ..='cd ..'
 alias gw='./gradlew $@'
 
+# programms
+alias g='git'
+alias j='/home/pascal/.joplin/Joplin.AppImage'
+alias v='vim'
+
 # get top process eating memory
 alias mem5='ps auxf | sort -nr -k 4 | head -5'
 alias mem10='ps auxf | sort -nr -k 4 | head -10'
