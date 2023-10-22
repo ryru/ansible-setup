@@ -41,3 +41,13 @@ set laststatus=2
 " prettier allow auto format without explicit header
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
+
+" resize with Ctrl+Short 
+noremap <silent> <C-S-Left> :vertical resize +1<CR>
+noremap <silent> <C-S-Right> :vertical resize -1<CR>
+noremap <silent> <C-S-Up> :resize +1<CR>
+noremap <silent> <C-S-Down> :resize -1<CR>
+
+" enable spell checking
+set spell
+set spelllang=en_gb,de_ch,de_de
