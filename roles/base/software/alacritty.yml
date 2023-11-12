@@ -1,7 +1,12 @@
 ---
-- name: add alacritty ppa repository
+#- name: add alacritty ppa repository
+#  apt_repository:
+#    repo: ppa:aslatter/ppa
+
+- name: remove alacritty ppa repository
   apt_repository:
     repo: ppa:aslatter/ppa
+    state: absent
 
 - name: install alacritty
   package:
