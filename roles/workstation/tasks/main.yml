@@ -8,3 +8,4 @@
     - import_tasks: software/libreoffice.yml
     - import_tasks: software/virtualbox.yml
     - import_tasks: software/vlc.yml
+    - import_tasks: software/wireshark.yml

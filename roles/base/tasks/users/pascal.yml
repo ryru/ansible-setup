@@ -10,6 +10,7 @@
     name: pascal
     group: pascal
     groups: adm,sudo
+    append: yes
     state: present
     comment: "Pascal"
     shell: /bin/bash

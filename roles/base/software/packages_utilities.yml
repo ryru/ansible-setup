@@ -29,6 +29,7 @@
       - telnet
       - traceroute
       - tree
+      - tshark
       - vim
       - wget
       - whois

@@ -1,0 +1,12 @@
+- name: software | wireshark | install package
+  tags: packages,wireshark,workstation-packages
+  package:
+    name: wireshark
+    state: present
+
+- name: software | wireshark | add current user to group wireshark
+  tags: packages,wireshark,workstation-packages
+  user:
+    name: pascal
+    groups: wireshark
+    append: yes
