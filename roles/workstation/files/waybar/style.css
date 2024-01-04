@@ -1,0 +1,154 @@
+@import "mocha.css";
+
+* {
+	font-family:
+		Roboto,
+		Iosevka,
+		Material Design Icons Desktop;
+	/* font-weight: bold; */
+	font-size: 14px;
+	color: @text;
+	min-height: 0;
+	padding-bottom: 1px;
+	padding-top: 1px;
+}
+
+.modules-left {
+	background-color: @surface0;
+	opacity: 0.7;
+	border-radius: 5px;
+	margin-left: 0px;
+	padding: 0px 5px 0px 0px;
+}
+
+.modules-center {
+	background-color: @surface0;
+	opacity: 0.7;
+	border-radius: 5px;
+	margin-left: 0px;
+	padding: 5px 5px 5px 5px;
+}
+
+.modules-right {
+	background-color: @surface0;
+	opacity: 0.7;
+	border-radius: 5px;
+	margin-left: 0px;
+	padding: 0px 0px 0px 5px;
+}
+
+window#waybar {
+	background-color: shade(@base, 0.9);
+	border-bottom: 2px solid alpha(@crust, 0.3);
+	transition-duration: 0.2s;
+	transition-property: background-color;
+	border-radius: 0px 0px 5px 5px;
+	padding: 0;
+	margin: 0;
+}
+
+#workspaces button {
+	background: transparent;
+	margin-left: 2px;
+	margin-right: 2px;
+	opacity: 0.7;
+}
+
+#workspaces button:hover {
+	/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+	background: @background;
+	border-bottom: 2px solid @sky;
+	/* box-shadow: inherit; */
+}
+
+#workspaces button.focused {
+	background-color: alpha(@blue, 0.3);
+	opacity: 0.8;
+}
+
+#workspaces button.urgent {
+	background-color: @maroon;
+}
+
+#scratchpad {
+	background: transparent;
+	opacity: 0.7;
+	padding: 2px 2px;
+}
+
+#clock {
+	background: transparent;
+	opacity: 0.7;
+	padding: 2px 2px;
+}
+
+#tray {
+	background: transparent;
+	opacity: 0.7;
+	padding: 2px 2px;
+}
+
+#bluetooth {
+	background: transparent;
+	opacity: 0.7;
+	padding: 2px 2px;
+	min-width: 35px;
+}
+
+#bluetooth.on {
+	color: @green;
+}
+
+#bluetooth.off {
+	color: @red;
+}
+
+#network {
+	color: @green;
+	background: transparent;
+	opacity: 0.7;
+	padding: 2px 2px;
+	min-width: 35px;
+}
+
+#network.disconnected {
+	color: @red;
+}
+
+#pulseaudio {
+	background: transparent;
+	opacity: 0.7;
+	padding: 2px 2px;
+	min-width: 35px;
+}
+
+#pulseaudio.muted {
+	color: @red;
+}
+
+#battery {
+	background: transparent;
+	opacity: 0.7;
+	padding: 2px 2px;
+	color: @green;
+	min-width: 35px;
+}
+
+#battery.charging,
+#battery.plugged {
+	padding: 2px 2px;
+}
+
+#battery.warning:not(.charging) {
+	color: @yellow;
+}
+
+#battery.critical:not(.charging) {
+	animation-direction: alternate;
+	animation-duration: 0.5s;
+	animation-iteration-count: infinite;
+	animation-name: blink;
+	animation-timing-function: linear;
+	background-color: @overlay2;
+	color: @red;
+}

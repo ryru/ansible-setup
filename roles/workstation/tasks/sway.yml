@@ -1,0 +1,59 @@
+---
+- name: swaywm | install packages
+  tags: sway
+  package:
+    state: latest
+    name:
+      - alacritty
+      - fonts-font-awesome
+      - light
+      - pavucontrol
+      - pulseaudio-utils
+      - sway
+      - swaybg
+      - swayidle
+      - swayimg
+      - swaylock
+      - waybar
+      - wofi
+
+- name: sway | create sway, waybar and wofi config dirs if it does not exist
+  tags: sway
+  file:
+    path: "/home/pascal/.config/{{ item.dir }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - { dir: "sway" }
+    - { dir: "sway/wp" }
+    - { dir: "waybar" }
+    - { dir: "wofi" }
+
+- name: Copy sway config file
+  copy:
+    src: "sway/{{ item.file }}"
+    dest: "/home/pascal/.config/sway/{{ item.file }}"
+  loop:
+    - { file: "config" }
+    - { file: "lock_screen.sh" }
+    - { file: "mocha" }
+    - { file: "status.sh" }
+    - { file: "swayexit.sh" }
+    - { file: "wp/taranaki2.jpeg" }
+
+- name: Copy waybar config file
+  copy:
+    src: "waybar/{{ item.file }}"
+    dest: "/home/pascal/.config/waybar/{{ item.file }}"
+  loop:
+    - { file: "config" }
+    - { file: "mocha.css" }
+    - { file: "style.css" }
+
+- name: Copy wofi config file
+  copy:
+    src: "wofi/{{ item.file }}"
+    dest: "/home/pascal/.config/wofi/{{ item.file }}"
+  loop:
+    - { file: "config" }
+    - { file: "style.css" }

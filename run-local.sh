@@ -6,6 +6,7 @@ help() {
     echo "ARGS"
     echo "<no args>  Install entire playbook"
     echo "dev        Install only developer tools"
+    echo "workspace  Install only workspace role"
     echo ""
 }
 
@@ -25,6 +26,11 @@ case "$1" in
   "dev")
     echo "Run only developer task from within the ansible playbook on local machine"
     ansible-playbook -c local local.yml --tags "dev"
+    exit 0
+    ;;
+  "workspace")
+    echo "Run only workspace task from within the ansible playbook on local machine"
+    ansible-playbook -c local local.yml --tags "workspace"
     exit 0
     ;;
   *)
