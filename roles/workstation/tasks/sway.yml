@@ -7,6 +7,7 @@
       - alacritty
       - fonts-font-awesome
       - light
+      - fuzzel
       - pavucontrol
       - pulseaudio-utils
       - sway
@@ -15,9 +16,8 @@
       - swayimg
       - swaylock
       - waybar
-      - wofi
 
-- name: sway | create sway, waybar and wofi config dirs if it does not exist
+- name: sway | create sway and waybar config dirs if it does not exist
   tags: sway
   file:
     path: "/home/pascal/.config/{{ item.dir }}"
@@ -27,7 +27,6 @@
     - { dir: "sway" }
     - { dir: "sway/wp" }
     - { dir: "waybar" }
-    - { dir: "wofi" }
 
 - name: Copy sway config file
   copy:
@@ -48,12 +47,4 @@
   loop:
     - { file: "config" }
     - { file: "mocha.css" }
-    - { file: "style.css" }
-
-- name: Copy wofi config file
-  copy:
-    src: "wofi/{{ item.file }}"
-    dest: "/home/pascal/.config/wofi/{{ item.file }}"
-  loop:
-    - { file: "config" }
     - { file: "style.css" }
