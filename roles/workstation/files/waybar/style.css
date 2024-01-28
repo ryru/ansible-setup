@@ -99,6 +99,10 @@ window#waybar {
 	color: @green;
 }
 
+#bluetooth.connected {
+	color: @green;
+}
+
 #bluetooth.off {
 	color: @red;
 }
